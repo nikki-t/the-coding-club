@@ -10,6 +10,7 @@ def lambda_handler(event, context):
     """Lambda handler that queries CMR and writes out granules to JSON file 
     which is uploaded to an S3 bucket."""
     
+    prefix = event["prefix"]
     s3_bucket = event["s3_bucket"]
     collection_shortnames = event["collection_shortnames"].split(',')
     start_time = event["start_time"]
@@ -25,7 +26,15 @@ def lambda_handler(event, context):
             cloud_hosted=True,
             temporal=(start_time, end_time)
         )
-        granule_paths = [g.data_links(access='direct')[0] for g in granules]
+        
+        granule_paths = []
+        for g in granules:
+            granule_paths.append({
+                "input_granule_path": g.data_links(access='direct')[0],
+                "output_granule_s3bucket": s3_bucket,
+                "prefix": prefix,
+                "collection_name": collection
+            })
         
         # Write out granules to JSON file
         granule_json = TMP.joinpath("granules.json")
