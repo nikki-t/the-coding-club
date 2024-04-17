@@ -19,6 +19,10 @@ provider "aws" {
 # Data sources
 data "aws_caller_identity" "current" {}
 
+data "aws_ecr_repository" "podaac_sst_repo_zero" {
+  name = var.ecr_repo_zero
+}
+
 data "aws_ecr_repository" "podaac_sst_repo_one" {
   name = var.ecr_repo_one
 }

@@ -15,6 +15,11 @@ variable "default_tags" {
   default = {}
 }
 
+variable "ecr_repo_zero" {
+  type        = string
+  description = "sst-lambda-query container image repository name"
+}
+
 variable "ecr_repo_one" {
   type        = string
   description = "sst-lambda-explode container image repository name"
