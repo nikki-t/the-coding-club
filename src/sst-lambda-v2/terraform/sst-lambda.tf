@@ -15,6 +15,13 @@ resource "aws_lambda_function" "aws_lambda_sst_one_explode" {
   package_type  = "Image"
   memory_size   = 6144
   timeout       = 900
+  environment {
+    variables = {
+      BATCH_SIZE = 100
+      SUBSET_DF = "true"
+      SUBSET_SIZE = 300
+    }
+  }
 }
 
 resource "aws_lambda_function" "aws_lambda_sst_two_write" {
