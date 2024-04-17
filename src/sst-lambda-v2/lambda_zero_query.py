@@ -15,8 +15,7 @@ def lambda_handler(event, context):
     start_time = event["start_time"]
     end_time = event["end_time"]
     
-    session = boto3.Session(profile_name="saml-pub")
-    s3 = session.resource("s3")
+    s3 = boto3.resource("s3")
     
     for collection in collection_shortnames:
         
