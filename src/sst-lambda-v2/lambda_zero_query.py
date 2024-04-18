@@ -6,7 +6,7 @@ import pathlib
 
 TMP = pathlib.Path("/tmp")
 
-def lambda_handler(event, context):
+def lambda_handler_query(event, context):
     """Lambda handler that queries CMR and writes out granules to JSON file 
     which is uploaded to an S3 bucket."""
     

@@ -15,4 +15,4 @@ COPY . ${LAMBDA_TASK_ROOT}
 # FROM stage2 as stage3
 LABEL version="0.1" \
     description="Containerized Lambda: SST File Explode"
-CMD [ "lambda_zero_query.lambda_handler" ]
+CMD [ "lambda_zero_query.lambda_handler_query" ]

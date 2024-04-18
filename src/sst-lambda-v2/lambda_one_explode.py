@@ -162,6 +162,7 @@ def upload_json(json_data, collection, output_s3_bucket):
     
     explode_json.unlink()
 
+
 def lambda_handler_explode(event, context):
     """Lambda event handler to orchestrate calculation of global mean."""
     # --------------------
